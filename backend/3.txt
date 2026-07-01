@@ -1,0 +1,90 @@
+
+=== bsessions 전체 현황 ===
+  (0, None, None)
+
+=== bjobs 목록 (상위 10) ===
+  ('Transform job', 22000, -1, False)
+  ('MCHSMD01_VM_backup', 0, 0, False)
+  ('MCVDBS01_VM_backup', 0, 1, False)
+  ('MCHOPS02_agent_backup - 172.16.21.46', 12000, 0, False)
+  ('MCHOPS01_agent_backup - 172.16.21.45', 12000, 0, False)
+  ('MCHARS02_cfs_agent_backup', 12003, 0, False)
+  ('MCHMCD01_cfs_file_backup', 12003, 0, False)
+  ('MCHCPS03_VM_backup', 0, 0, False)
+  ('MCHACS02_cfs_file_backup', 12003, 0, False)
+  ('MCHDBS02_ORA_full_MCMCADB2', 12003, 0, False)
+
+=== reportrepositoriesview 컬럼 ===
+  ('id', 'uuid')
+  ('name', 'USER-DEFINED')
+  ('description', 'USER-DEFINED')
+  ('type', 'integer')
+  ('host_id', 'uuid')
+  ('mount_host_id', 'uuid')
+  ('gateway_auto_detect', 'boolean')
+  ('path', 'USER-DEFINED')
+  ('options', 'xml')
+  ('host_name', 'USER-DEFINED')
+  ('is_busy', 'boolean')
+  ('is_unavailable', 'boolean')
+  ('is_full', 'boolean')
+  ('free_space', 'bigint')
+  ('total_space', 'bigint')
+  ('is_nutanix_based', 'integer')
+  ('is_wan_accelerator_enabled', 'boolean')
+  ('is_cloud_available', 'boolean')
+  ('is_rotated_drive_repository', 'boolean')
+  ('parent_rep_id', 'uuid')
+  ('parent_rep_name', 'USER-DEFINED')
+  ('has_shadow_sobr_parent', 'integer')
+  ('extrepos_id', 'uuid')
+  ('extent_role', 'integer')
+  ('extent_type', 'integer')
+  ('status', 'integer')
+  ('use_nfs_on_mount_host', 'boolean')
+  ('location_id', 'uuid')
+  ('group', 'integer')
+  ('share_creds_id', 'uuid')
+  ('helper_host_id', 'uuid')
+  ('helper_host_name', 'USER-DEFINED')
+  ('are_share_creds_visible', 'boolean')
+  ('is_archive_extent_exists', 'integer')
+  ('is_upgrade_required', 'boolean')
+  ('used_space', 'bigint')
+  ('is_used_by_nas_backup_archive', 'integer')
+  ('usn', 'bigint')
+
+=== reportrepositoriesview 데이터 ===
+  (UUID('88788f9e-d8f5-4eb4-bc4f-9b3f5403bcec'), 'Default Backup Repository', 'Created by Veeam Backup', 0, UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), False, 'E:\\Backup', '\r\n      <BackupRepositoryOptions>\r\n        <RepositoryOptions>\r\n          <MaxTasksCount>12</MaxTasksCount>\r\n          <MaxPointCount>2147483 ... (489 characters truncated) ... coding>\r\n          <RotatedDriveCleanupMode>0</RotatedDriveCleanupMode>\r\n        </RepositoryOptions>\r\n      </BackupRepositoryOptions>\r\n    ', 'This server', False, False, False, -1, -1, 0, False, True, False, None, None, 0, None, None, None, 0, True, None, 0, UUID('00000000-0000-0000-0000-000000000000'), None, None, None, 0, False, 0, 0, 20340297)
+  (UUID('62e4caf9-8621-433d-9994-b9c319488beb'), 'DataDomain', 'Created by MCHOBS01\\stkadmin at 2026-01-15 오전 11:16.', 3, None, UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), True, 'ddboost://172.16.22.125:Veeam@/', '\r\n      <BackupRepositoryOptions>\r\n        <RepositoryOptions>\r\n          <MaxTasksCount>-1</MaxTasksCount>\r\n          <MaxPointCount>2147483 ... (489 characters truncated) ... coding>\r\n          <RotatedDriveCleanupMode>0</RotatedDriveCleanupMode>\r\n        </RepositoryOptions>\r\n      </BackupRepositoryOptions>\r\n    ', None, False, True, False, 765540232593408, 1032827490533376, 0, False, True, False, None, None, 0, None, None, None, 0, True, None, 0, UUID('00000000-0000-0000-0000-000000000000'), None, None, None, 0, False, 1377545561722880, 0, 20340341)
+
+=== 스키마 목록 ===
+  ('information_schema',)
+  ('pg_catalog',)
+  ('public',)
+
+=== backupjobsessions 컬럼 ===
+
+=== backupjobsessions 현황 ===
+  오류: (psycopg2.errors.UndefinedTable) 오류:  "backupjobsessions" 이름의 릴레이션(relation)이 없습니다
+LINE 3:     FROM backupjobsessions
+                 ^
+
+[SQL: 
+    SELECT COUNT(*) AS total, MAX(creation_time) AS newest
+    FROM backupjobsessions
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+=== backupjobsessions 최근 5건 ===
+  오류: (psycopg2.errors.UndefinedTable) 오류:  "backupjobsessions" 이름의 릴레이션(relation)이 없습니다
+LINE 3:     FROM backupjobsessions
+                 ^
+
+[SQL: 
+    SELECT job_id, creation_time, end_time, result, state, processed_size
+    FROM backupjobsessions
+    ORDER BY creation_time DESC
+    LIMIT 5
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)

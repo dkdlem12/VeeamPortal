@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1B6CA8;
+    --color-primary-dark: #145090;
+    --color-secondary: #00B050;
+    --color-danger: #E74C3C;
+    --color-warning: #F39C12;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+    background-color: #F0F2F5;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}

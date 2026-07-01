@@ -1,0 +1,92 @@
+
+=== backuprepositories 컬럼 ===
+  id (uuid)
+  name (USER-DEFINED)
+  description (USER-DEFINED)
+  type (integer)
+  host_id (uuid)
+  mount_host_id (uuid)
+  path (USER-DEFINED)
+  options (xml)
+  usn (bigint)
+  share_creds_id (uuid)
+  is_busy (boolean)
+  is_unavailable (boolean)
+  is_full (boolean)
+  unique_id (uuid)
+  on_rotated_drive (boolean)
+  end_point_key_id (uuid)
+  is_dependant (boolean)
+  status (integer)
+  use_nfs_on_mount_host (boolean)
+  creation_date (timestamp without time zone)
+
+=== backupproxies 컬럼 ===
+  id (uuid)
+  name (USER-DEFINED)
+  description (USER-DEFINED)
+  type (integer)
+  host_id (uuid)
+  options (xml)
+  usn (bigint)
+  disabled (boolean)
+  is_busy (boolean)
+  is_unavailable (boolean)
+  unique_id (uuid)
+  is_need_unmounts (boolean)
+
+=== hosts 컬럼 ===
+  id (uuid)
+  type (integer)
+  name (USER-DEFINED)
+  ip (USER-DEFINED)
+  parent_id (uuid)
+  info (USER-DEFINED)
+  description (USER-DEFINED)
+  protocol (integer)
+  reference (USER-DEFINED)
+  api_version (integer)
+  usn (bigint)
+  win_creds (xml)
+  bios_uuid (USER-DEFINED)
+  options (xml)
+  physical_host_id (uuid)
+  credentials_id (uuid)
+  is_unavailable (boolean)
+  dns_name (USER-DEFINED)
+  host_instance_id (USER-DEFINED)
+  runtime_info (xml)
+
+=== bjobs 컬럼 ===
+  id (uuid)
+  type (integer)
+  name (USER-DEFINED)
+  target_host_id (uuid)
+  target_dir (USER-DEFINED)
+  target_file (USER-DEFINED)
+  options (xml)
+  schedule (xml)
+  is_deleted (boolean)
+  latest_result (integer)
+  vss_options (xml)
+  vcb_host_id (uuid)
+  target_type (integer)
+  description (USER-DEFINED)
+  usn (bigint)
+  job_source_type (integer)
+  included_size (bigint)
+  excluded_size (bigint)
+  schedule_enabled (boolean)
+  platform (integer)
+
+=== 최근 세션 5건 (날짜 무관) ===
+
+=== backuprepositories 샘플 ===
+  컬럼: ['id', 'name', 'description', 'type', 'host_id', 'mount_host_id', 'path', 'options', 'usn', 'share_creds_id', 'is_busy', 'is_unavailable', 'is_full', 'unique_id', 'on_rotated_drive', 'end_point_key_id', 'is_dependant', 'status', 'use_nfs_on_mount_host', 'creation_date']
+  {'id': UUID('88788f9e-d8f5-4eb4-bc4f-9b3f5403bcec'), 'name': 'Default Backup Repository', 'description': 'Created by Veeam Backup', 'type': 0, 'host_id': UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), 'mount_host_id': UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), 'path': 'E:\\Backup', 'options': '\r\n      <BackupRepositoryOptions>\r\n        <RepositoryOptions>\r\n          <MaxTasksCount>12</MaxTasksCount>\r\n          <MaxPointCount>2147483647</MaxPointCount>\r\n          <WriteThroutput>0</WriteThroutput>\r\n          <Uncompress>False</Uncompress>\r\n          <OptimizeBlockAlign>True</OptimizeBlockAlign>\r\n          <RemoteAccessLimitation>10</RemoteAccessLimitation>\r\n          <EpEncryptionEnabled>False</EpEncryptionEnabled>\r\n          <OneBackupFilePerVm>True</OneBackupFilePerVm>\r\n          <IsAutoDetectAffinityProxies>True</IsAutoDetectAffinityProxies>\r\n          <NFSRepositoryEncoding>-1</NFSRepositoryEncoding>\r\n          <RotatedDriveCleanupMode>0</RotatedDriveCleanupMode>\r\n        </RepositoryOptions>\r\n      </BackupRepositoryOptions>\r\n    ', 'usn': 20340297, 'share_creds_id': UUID('00000000-0000-0000-0000-000000000000'), 'is_busy': False, 'is_unavailable': False, 'is_full': False, 'unique_id': UUID('4b27dc99-674a-4d82-880c-2f346bef5f98'), 'on_rotated_drive': False, 'end_point_key_id': UUID('00000000-0000-0000-0000-000000000000'), 'is_dependant': False, 'status': 0, 'use_nfs_on_mount_host': True, 'creation_date': None}
+  {'id': UUID('62e4caf9-8621-433d-9994-b9c319488beb'), 'name': 'DataDomain', 'description': 'Created by MCHOBS01\\stkadmin at 2026-01-15 오전 11:16.', 'type': 3, 'host_id': None, 'mount_host_id': UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), 'path': 'ddboost://172.16.22.125:Veeam@/', 'options': '\r\n      <BackupRepositoryOptions>\r\n        <RepositoryOptions>\r\n          <MaxTasksCount>-1</MaxTasksCount>\r\n          <MaxPointCount>2147483647</MaxPointCount>\r\n          <WriteThroutput>0</WriteThroutput>\r\n          <Uncompress>True</Uncompress>\r\n          <OptimizeBlockAlign>False</OptimizeBlockAlign>\r\n          <RemoteAccessLimitation>10</RemoteAccessLimitation>\r\n          <EpEncryptionEnabled>False</EpEncryptionEnabled>\r\n          <OneBackupFilePerVm>True</OneBackupFilePerVm>\r\n          <IsAutoDetectAffinityProxies>True</IsAutoDetectAffinityProxies>\r\n          <NFSRepositoryEncoding>-1</NFSRepositoryEncoding>\r\n          <RotatedDriveCleanupMode>0</RotatedDriveCleanupMode>\r\n        </RepositoryOptions>\r\n      </BackupRepositoryOptions>\r\n    ', 'usn': 20340341, 'share_creds_id': UUID('00000000-0000-0000-0000-000000000000'), 'is_busy': False, 'is_unavailable': True, 'is_full': False, 'unique_id': UUID('033c25d8-844c-4cad-9db3-1020e166fcaf'), 'on_rotated_drive': False, 'end_point_key_id': UUID('00000000-0000-0000-0000-000000000000'), 'is_dependant': False, 'status': 0, 'use_nfs_on_mount_host': True, 'creation_date': datetime.datetime(2026, 1, 15, 11, 31, 18, 233000)}
+
+=== backupproxies 샘플 ===
+  컬럼: ['id', 'name', 'description', 'type', 'host_id', 'options', 'usn', 'disabled', 'is_busy', 'is_unavailable', 'unique_id', 'is_need_unmounts']
+  {'id': UUID('18b661c1-d9dc-4233-90a0-7e7b10dc2d09'), 'name': 'VMware Backup Proxy', 'description': 'Created by Veeam Backup & Replication', 'type': 0, 'host_id': UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), 'options': '\r\n      <ViProxyOptions>\r\n        <TransportMode>Auto</TransportMode>\r\n        <FailoverToNetwork>True</FailoverToNetwork>\r\n        <UseSsl>False</UseSsl>\r\n        <IsAutoDetectDisks>True</IsAutoDetectDisks>\r\n        <MaxTasksCount>8</MaxTasksCount>\r\n        <AvailableDiskSlotsMaxCount>0</AvailableDiskSlotsMaxCount>\r\n      </ViProxyOptions>\r\n    ', 'usn': 15680471, 'disabled': False, 'is_busy': False, 'is_unavailable': False, 'unique_id': UUID('5afad324-2eab-490c-a550-6e6931ab19fd'), 'is_need_unmounts': False}
+  {'id': UUID('50cbf622-129e-482a-9197-d67e5bb1fb1f'), 'name': 'Backup Proxy', 'description': 'Created by Veeam Backup & Replication', 'type': 6, 'host_id': UUID('6745a759-2205-4cd2-b172-8ec8f7e60ef8'), 'options': '\r\n      <FileProxyOptions>\r\n        <MaxTasksCount>8</MaxTasksCount>\r\n      </FileProxyOptions>\r\n    ', 'usn': 15680472, 'disabled': False, 'is_busy': False, 'is_unavailable': False, 'unique_id': UUID('6a4360ea-5ccf-47ff-ac83-80aed5cd2f1f'), 'is_need_unmounts': False}

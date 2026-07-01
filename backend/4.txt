@@ -1,0 +1,102 @@
+
+=== "backup.model.jobsessions" 건수 및 최신 ===
+  (13623, datetime.datetime(2026, 6, 22, 16, 45, 59, 231159))
+
+=== "backup.model.backupjobsessions" 건수 및 최신 ===
+  오류: (psycopg2.errors.UndefinedColumn) 오류:  "creation_time" 이름의 칼럼은 없습니다
+LINE 2:         SELECT COUNT(*) AS cnt, MAX(creation_time) AS newest
+                                            ^
+
+[SQL: 
+        SELECT COUNT(*) AS cnt, MAX(creation_time) AS newest
+        FROM "backup.model.backupjobsessions"
+    ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+=== "backup.model.backuptasksessions" 건수 및 최신 ===
+  (12431, datetime.datetime(2026, 6, 21, 21, 3, 40, 546171))
+
+=== "bsessioninfo" 건수 및 최신 ===
+  (0, None)
+
+=== "backup.model.jobsessions" 컬럼 ===
+  ('id', 'uuid')
+  ('job_id', 'uuid')
+  ('job_name', 'USER-DEFINED')
+  ('job_type', 'integer')
+  ('creation_time', 'timestamp without time zone')
+  ('end_time', 'timestamp without time zone')
+  ('state', 'integer')
+  ('result', 'integer')
+  ('control', 'integer')
+  ('description', 'USER-DEFINED')
+  ('operation', 'USER-DEFINED')
+  ('progress', 'integer')
+  ('usn', 'bigint')
+  ('app_group_fail', 'boolean')
+  ('troubleshoot_mode', 'boolean')
+  ('log_xml', 'xml')
+  ('lease_id', 'uuid')
+  ('orig_session_id', 'uuid')
+  ('run_manually', 'boolean')
+  ('aux_data', 'xml')
+  ('job_spec', 'xml')
+  ('pid', 'integer')
+  ('reason', 'USER-DEFINED')
+  ('stop_details', 'USER-DEFINED')
+  ('initiator_sid', 'USER-DEFINED')
+
+=== "backup.model.jobsessions" 최근 5건 ===
+  (UUID('06bcf32f-3914-4645-bc51-80f8e171d620'), UUID('06bcf32f-3914-4645-bc51-80f8e171d620'), 'Infrastructure update', 10001, datetime.datetime(2026, 6, 22, 16, 45, 59, 231159), datetime.datetime(2026, 6, 22, 16, 58, 7, 704667), -1, 0, 0, '', '', 100, 20340539, False, False, '<Root TotalUsn="0" TotalId="0"></Root>', UUID('00000000-0000-0000-0000-000000000000'), UUID('06bcf32f-3914-4645-bc51-80f8e171d620'), True, '<AuxData><SessionStarterInfo Version="1" UserName="SYSTEM" UserDomainName="NT AUTHORITY" RunManually="False" LoginType="4" LoginName="SYSTEM" /></AuxData>', '', 10424, None, None, 'S-1-5-18', 'SYSTEM', 'Utils', None, UUID('00000000-0000-0000-0000-000000000000'), None, None, 2, True)
+  (UUID('3ea8b3e2-3443-420a-82c0-c79702722af7'), UUID('e384c4aa-5ecc-4432-bdf3-4c8f6bc881d1'), 'Host Discovery', 19, datetime.datetime(2026, 6, 22, 16, 3, 14, 977213), datetime.datetime(2026, 6, 22, 16, 13, 52, 615533), -1, 2, 0, '', '', 100, 20340362, False, False, '<Root TotalUsn="0" TotalId="0"></Root>', UUID('00000000-0000-0000-0000-000000000000'), UUID('3ea8b3e2-3443-420a-82c0-c79702722af7'), True, '<DiscoverAuxData><SourceType>0</SourceType><RescanMode>0</RescanMode><HostIds><HostIds>00000000-0000-0000-0000-000000000000</HostIds></HostIds><SessionStarterInfo Version="1" UserName="SYSTEM" UserDomainName="NT AUTHORITY" RunManually="False" LoginType="4" LoginName="SYSTEM" /></DiscoverAuxData>', '', 4356, None, None, 'S-1-5-18', 'SYSTEM', 'Utils', None, UUID('00000000-0000-0000-0000-000000000000'), None, None, 2, True)
+  (UUID('db2659ac-0570-49a5-b32d-6302aea00a2f'), UUID('6a16dd0c-dfa8-4fda-acdb-c3984e4f75f8'), 'Infrastructure rescan', 106, datetime.datetime(2026, 6, 22, 15, 46, 56, 408342), datetime.datetime(1900, 1, 1, 0, 0), 5, -1, 0, '', '', 0, 20340198, False, False, '<Root TotalUsn="0" TotalId="0"></Root>', UUID('00000000-0000-0000-0000-000000000000'), UUID('db2659ac-0570-49a5-b32d-6302aea00a2f'), True, '<CHierarchyScanJobAuxData><ProcessedObjects /><SessionStarterInfo Version="1" UserName="SYSTEM" UserDomainName="NT AUTHORITY" RunManually="False" LoginType="4" LoginName="SYSTEM" /></CHierarchyScanJobAuxData>', '<InfrastructureRescanSpec />', 12604, None, None, 'S-1-5-18', 'SYSTEM', None, None, UUID('00000000-0000-0000-0000-000000000000'), None, None, 2, True)
+  (UUID('b3f929a9-9269-45ca-8927-69e757a9d62e'), UUID('0bf3f100-7da8-4190-af1d-c15daeb80a32'), 'Audit Logs Archiving', 23000, datetime.datetime(2026, 6, 22, 15, 46, 8, 547309), datetime.datetime(2026, 6, 22, 15, 46, 20, 407147), -1, 0, 0, '', '', 100, 20340190, False, False, '<Root TotalUsn="0" TotalId="0"></Root>', UUID('00000000-0000-0000-0000-000000000000'), UUID('b3f929a9-9269-45ca-8927-69e757a9d62e'), True, '<AuxData><SessionStarterInfo Version="1" UserName="SYSTEM" UserDomainName="NT AUTHORITY" RunManually="False" LoginType="4" LoginName="SYSTEM" /></AuxData>', '', 1172, None, None, 'S-1-5-18', 'SYSTEM', 'Audit', None, UUID('00000000-0000-0000-0000-000000000000'), None, None, 2, True)
+  (UUID('d18ae6ca-0d9c-4897-bba9-ac98685a26ad'), UUID('0b4f9191-121f-48d0-9241-871f389ca602'), 'Catalog Cleanup', 21, datetime.datetime(2026, 6, 22, 15, 46, 8, 406535), datetime.datetime(2026, 6, 22, 15, 46, 20, 875762), -1, 0, 0, '', '', 100, 20340192, False, False, '<Root TotalUsn="0" TotalId="0"></Root>', UUID('00000000-0000-0000-0000-000000000000'), UUID('d18ae6ca-0d9c-4897-bba9-ac98685a26ad'), True, '<DeadLine Ticks="639177076785631380" />', '', 9204, None, None, 'S-1-5-18', 'SYSTEM', 'Utils', None, UUID('00000000-0000-0000-0000-000000000000'), None, None, 2, True)
+
+=== "backup.model.backupjobsessions" 컬럼 ===
+  ('id', 'uuid')
+  ('is_retry', 'boolean')
+  ('total_objects', 'integer')
+  ('processed_objects', 'integer')
+  ('total_size', 'bigint')
+  ('processed_size', 'bigint')
+  ('usn', 'bigint')
+  ('job_source_type', 'integer')
+  ('avg_speed', 'bigint')
+  ('is_full', 'boolean')
+  ('read_size', 'bigint')
+  ('stored_size', 'bigint')
+  ('bottleneck', 'integer')
+  ('source_storage', 'integer')
+  ('source_proxy', 'integer')
+  ('source_network', 'integer')
+  ('target_storage', 'integer')
+  ('target_proxy', 'integer')
+  ('target_network', 'integer')
+  ('processed_used_size', 'bigint')
+  ('will_be_retried', 'boolean')
+  ('backed_up_size', 'bigint')
+  ('source_wan', 'integer')
+  ('target_wan', 'integer')
+  ('total_used_size', 'bigint')
+
+=== "backup.model.backupjobsessions" 최근 5건 ===
+  오류: (psycopg2.errors.UndefinedColumn) 오류:  "creation_time" 이름의 칼럼은 없습니다
+LINE 4:     ORDER BY creation_time DESC
+                     ^
+
+[SQL: 
+    SELECT *
+    FROM "backup.model.backupjobsessions"
+    ORDER BY creation_time DESC
+    LIMIT 5
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+=== reportrepositoriesview 용량 데이터 ===
+  ('Default Backup Repository', 'This server', 0, -1, -1, 0, False, False)
+  ('DataDomain', None, 3, 765540232593408, 1032827490533376, 1377545561722880, True, False)
+
+=== 프록시 + 호스트 조인 ===
+  ('VMware Backup Proxy', 0, False, False, 'This server', None, None, '\r\n      <ViProxyOptions>\r\n        <TransportMode>Auto</TransportMode>\r\n        <FailoverToNetwork>True</FailoverToNetwork>\r\n        <UseSsl>F ... (68 characters truncated) ... \r\n        <MaxTasksCount>8</MaxTasksCount>\r\n        <AvailableDiskSlotsMaxCount>0</AvailableDiskSlotsMaxCount>\r\n      </ViProxyOptions>\r\n    ')
+  ('Backup Proxy', 6, False, False, 'This server', None, None, '\r\n      <FileProxyOptions>\r\n        <MaxTasksCount>8</MaxTasksCount>\r\n      </FileProxyOptions>\r\n    ')

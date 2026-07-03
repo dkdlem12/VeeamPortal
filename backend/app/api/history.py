@@ -24,7 +24,7 @@ def get_job_history(
     job_name: Optional[str] = None,
     server: Optional[str] = None,
     page: int = Query(1, ge=1),
-    page_size: int = Query(20, ge=1, le=200),
+    page_size: int = Query(20, ge=1, le=2000),
 ):
     return get_collector().get_job_history(
         start_date, end_date, job_type, status, job_name, server, page, page_size

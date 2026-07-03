@@ -49,6 +49,7 @@ export default function BackupWindowPage() {
   const [day, setDay] = useState<Date>(startOfDay(new Date()));
   const [selectedSessionId, setSelectedSessionId] = useState<string | null>(null);
   const dayTouched = useRef(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
   // 대상 서버 열 너비(px). null 이면 이름 길이에 맞춰 자동 산정, 드래그하면 사용자 값 고정.
   const [leftW, setLeftW] = useState<number | null>(null);
   // 표(타임라인) 영역 높이(px). null 이면 내용에 맞춰 자동, 드래그하면 사용자 값 고정.
@@ -92,7 +93,7 @@ export default function BackupWindowPage() {
         jobName: '',
         server: '',
         page: 1,
-        pageSize: 200,
+        pageSize: 1000,
       }),
   });
 
@@ -145,7 +146,15 @@ export default function BackupWindowPage() {
 
     const toX = (t: number) => ((t - domainStart) / MIN_MS) * PX_PER_MIN;
 
-    return { servers, serverMap, width, hourMarks, tenMarks, dayBoundaries, nextDayLeft, toX, domainStart, domainEnd };
+    // 첫 백업 막대의 x 위치(자동 스크롤용) — 실제 백업이 늦은 밤/새벽에 몰릴 때 대비
+    let firstBarLeft = Infinity;
+    for (const j of valid) {
+      const s = Math.max(new Date(j.startTime).getTime(), domainStart);
+      firstBarLeft = Math.min(firstBarLeft, toX(s));
+    }
+    if (!isFinite(firstBarLeft)) firstBarLeft = 0;
+
+    return { servers, serverMap, width, hourMarks, tenMarks, dayBoundaries, nextDayLeft, toX, domainStart, domainEnd, firstBarLeft };
   }, [jobs, windowStart, windowEnd]);
 
   // 대상 서버 이름이 잘리지 않도록 가장 긴 이름 기준으로 열 너비 자동 산정
@@ -159,6 +168,13 @@ export default function BackupWindowPage() {
   // 내용에 맞춘 기본 표 높이 (헤더 + 행), 최대 720px
   const contentH = model ? HEADER_H + model.servers.length * ROW_H + 2 : 0;
   const effTableH = tableH ?? Math.min(contentH, 720);
+
+  // 데이터 로드 시 첫 백업 막대 위치로 가로 스크롤 (백업이 심야/새벽에 몰려도 바로 보이도록)
+  useEffect(() => {
+    if (scrollRef.current && model) {
+      scrollRef.current.scrollLeft = Math.max(0, model.firstBarLeft - 48);
+    }
+  }, [model]);
 
   // 드래그 리사이즈 공통 로직
   const startDrag = (
@@ -287,7 +303,7 @@ export default function BackupWindowPage() {
             <div className="p-12 text-center text-gray-400 text-sm">{t('common.noData')}</div>
           ) : (
             <>
-            <div className="overflow-auto" style={{ height: effTableH }}>
+            <div ref={scrollRef} className="overflow-auto" style={{ height: effTableH }}>
               <div className="flex" style={{ minWidth: effLeftW + model.width }}>
                 {/* Y축: 대상 서버 (좌측 고정) */}
                 <div
